@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - URL Shortener</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Admin Panel</h1>
+            <p>Manage URLs and Users</p>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- Login Form (if not authenticated) -->
+            <section id="login-section" class="admin-section">
+                <h2>Admin Login</h2>
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" name="username" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    
+                    <button type="submit">Login</button>
+                </form>
+                
+                <div id="login-error" class="error" style="display: none;"></div>
+            </section>
+            
+            <!-- Admin Dashboard (if authenticated) -->
+            <section id="dashboard-section" class="admin-section" style="display: none;">
+                <div class="dashboard-header">
+                    <h2>Dashboard</h2>
+                    <button id="logout-btn">Logout</button>
+                </div>
+                
+                <div class="tab-container">
+                    <div class="tabs">
+                        <button class="tab-btn active" data-tab="urls">URLs</button>
+                        <button class="tab-btn" data-tab="users">Users</button>
+                        <button class="tab-btn" data-tab="analytics">Analytics</button>
+                    </div>
+                    
+                    <!-- URLs Management Tab -->
+                    <div id="urls-tab" class="tab-content active">
+                        <h3>URL Management</h3>
+                        <table id="urls-table">
+                            <thead>
+                                <tr>
+                                    <th>Short Code</th>
+                                    <th>Original URL</th>
+                                    <th>Clicks</th>
+                                    <th>Created</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- URLs will be populated here by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <!-- Users Management Tab -->
+                    <div id="users-tab" class="tab-content">
+                        <h3>User Management</h3>
+                        <table id="users-table">
+                            <thead>
+                                <tr>
+                                    <th>Username</th>
+                                    <th>Email</th>
+                                    <th>Created</th>
+                                    <th>Role</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Users will be populated here by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <!-- Analytics Tab -->
+                    <div id="analytics-tab" class="tab-content">
+                        <h3>Analytics Dashboard</h3>
+                        <div class="analytics-container">
+                            <div class="chart-container">
+                                <canvas id="clicks-chart"></canvas>
+                            </div>
+                            
+                            <div class="stats-container">
+                                <div class="stat-card">
+                                    <h4>Total URLs</h4>
+                                    <p id="total-urls">0</p>
+                                </div>
+                                
+                                <div class="stat-card">
+                                    <h4>Total Clicks</h4>
+                                    <p id="total-clicks">0</p>
+                                </div>
+                                
+                                <div class="stat-card">
+                                    <h4>Active URLs</h4>
+                                    <p id="active-urls">0</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{{ url_for('static', filename='js/admin.js') }}"></script>
+</body>
+</html>

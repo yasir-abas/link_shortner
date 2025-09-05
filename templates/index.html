@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortener</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>URL Shortener</h1>
+            <p>Create short, memorable links for any webpage</p>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="shortener-section">
+                <form id="shorten-form">
+                    <div class="form-group">
+                        <label for="url">Enter your URL:</label>
+                        <input type="text" id="url" name="url" placeholder="https://example.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="custom_code">Custom short code (optional):</label>
+                        <input type="text" id="custom_code" name="custom_code" placeholder="my-link">
+                    </div>
+                    
+                    <button type="submit">Shorten URL</button>
+                </form>
+                
+                <div id="result" class="result-container" style="display: none;">
+                    <h2>Your Shortened URL:</h2>
+                    <div class="url-result">
+                        <input type="text" id="shortened-url" readonly>
+                        <button id="copy-btn">Copy</button>
+                    </div>
+                    
+                    <div class="preview-section">
+                        <h3>Preview:</h3>
+                        <div id="preview-content"></div>
+                    </div>
+                    
+                    <div class="qr-section">
+                        <h3>QR Code:</h3>
+                        <img id="qr-code" alt="QR Code for shortened URL">
+                    </div>
+                    
+                    <div class="share-section">
+                        <h3>Share:</h3>
+                        <div class="social-buttons">
+                            <button class="share-btn" data-platform="twitter">Twitter</button>
+                            <button class="share-btn" data-platform="facebook">Facebook</button>
+                            <button class="share-btn" data-platform="linkedin">LinkedIn</button>
+                            <button class="share-btn" data-platform="email">Email</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="error-message" class="error" style="display: none;"></div>
+            </section>
+        </div>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

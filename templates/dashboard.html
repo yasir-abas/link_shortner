@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics Dashboard - URL Shortener</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Analytics Dashboard</h1>
+            <p>Real-time insights on your shortened URLs</p>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="dashboard-section">
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <h3>Total URLs</h3>
+                        <p id="total-urls">0</p>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <h3>Total Clicks</h3>
+                        <p id="total-clicks">0</p>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <h3>Active URLs</h3>
+                        <p id="active-urls">0</p>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <h3>Top Country</h3>
+                        <p id="top-country">Unknown</p>
+                    </div>
+                </div>
+                
+                <div class="charts-container">
+                    <div class="chart-card">
+                        <h3>Clicks Over Time</h3>
+                        <div class="chart-container">
+                            <canvas id="clicks-over-time"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="chart-card">
+                        <h3>Geographic Distribution</h3>
+                        <div class="chart-container">
+                            <canvas id="geographic-distribution"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="chart-card">
+                        <h3>Top URLs by Clicks</h3>
+                        <div class="chart-container">
+                            <canvas id="top-urls"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="chart-card">
+                        <h3>Device Types</h3>
+                        <div class="chart-container">
+                            <canvas id="device-types"></canvas>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="table-container">
+                    <h3>Recent Activity</h3>
+                    <table id="recent-activity">
+                        <thead>
+                            <tr>
+                                <th>Short Code</th>
+                                <th>Original URL</th>
+                                <th>IP Address</th>
+                                <th>Country</th>
+                                <th>Timestamp</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Recent activity will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{{ url_for('static', filename='js/analytics.js') }}"></script>
+</body>
+</html>
