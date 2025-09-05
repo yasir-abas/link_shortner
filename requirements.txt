@@ -1,7 +1,8 @@
-Flask==2.3.2
-Flask-Caching==2.0.1
-qrcode==7.4.2
-Pillow==9.5.0
-requests==2.31.0
-validators==0.20.0
-bcrypt==4.0.1
+Flask
+Flask-Caching
+qrcode
+Pillow
+requests
+validators
+
+bcrypt
